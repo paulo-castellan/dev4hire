@@ -1,0 +1,7 @@
+<% if notice %>
+  <%= notice %>
+<% end %>
+
+<%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
+<%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %>
+<%= @dev_profile.full_name %>

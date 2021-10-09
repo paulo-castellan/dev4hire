@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    models:
+      dev_profile: Perfil da pessoa desenvolvedora
+    attributes:
+      dev_profile:
+        full_name: Nome completo
+        social_name: Nome social
+        date_of_birth: Data de nascimento
+        academic_education: Formação educacional
+        previous_experience: Experiência profissional
+        description: Sobre você
+    errors:
+      models:
+        dev_profile:
+          attributes:
+            dev:
+              required: É necessário a associação com uma Pessoa desenvolvedora 

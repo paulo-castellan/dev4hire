@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_134020) do
+ActiveRecord::Schema.define(version: 2021_10_09_180033) do
+
+  create_table "dev_profiles", force: :cascade do |t|
+    t.string "full_name"
+    t.string "social_name"
+    t.date "date_of_birth"
+    t.string "academic_education"
+    t.string "previous_experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "dev_id"
+    t.string "description"
+    t.index ["dev_id"], name: "index_dev_profiles_on_dev_id"
+  end
 
   create_table "devs", force: :cascade do |t|
     t.string "email", default: "", null: false

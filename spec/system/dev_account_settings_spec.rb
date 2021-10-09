@@ -12,6 +12,7 @@ describe 'visitor' do
   end
 
   it 'logs out from dev account' do
+    
     dev = Dev.create!(email: 'dev@dev.com', password: 123456)
 
     login_as dev, scope: :dev
@@ -25,6 +26,9 @@ describe 'visitor' do
   end
 
   it 'create account as dev' do
+    
+
+
     visit root_path
     click_on 'Entrar como Pessoa Desenvolvedora'
     click_on 'Sign up'
