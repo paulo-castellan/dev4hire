@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      dev: Pessoa desenvolvedora
+    attributes:
+      dev:
+        email: E-mail
+        password: Senha
+        minimum_password_length: Caracteres mínimos
+        password_confirmation: Confirme a senha
+        remember_me: Lembrar-me
+
