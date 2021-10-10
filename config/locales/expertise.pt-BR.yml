@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      expertise: Área de atuação
+    attributes:
+      expertise:
+        field_of_expertise: Área de atuação
+        
+    

@@ -1,6 +1,7 @@
 class DevProfilesController < ApplicationController
   def new
     @dev_profile = DevProfile.new
+    @expertise = Expertise.all
   end
 
   def show
@@ -23,6 +24,6 @@ class DevProfilesController < ApplicationController
   def dev_profile_params
     params.require(:dev_profile).permit(:full_name, :social_name, :date_of_birth,
                                         :academic_education, :previous_experience,
-                                        :description, :dev_id)
+                                        :description, :expertise_id, :dev_id)
   end
 end

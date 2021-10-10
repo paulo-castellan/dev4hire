@@ -1,0 +1,8 @@
+
+<%= form_with(model: @expertise) do |f| %>
+    <div>
+      <%= f.label :field_of_expertise %>
+      <%= f.date_field :field_of_expertise %>
+    </div>
+    <%= f.submit 'Cadastrar' %>
+<% end %>
