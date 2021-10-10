@@ -10,9 +10,3 @@ pt-BR:
         academic_education: Formação educacional
         previous_experience: Experiência profissional
         description: Sobre você
-    errors:
-      models:
-        dev_profile:
-          attributes:
-            dev:
-              required: É necessário a associação com uma Pessoa desenvolvedora 
