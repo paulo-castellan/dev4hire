@@ -1,0 +1,7 @@
+<h1>voce caiu aqui</h1>
+
+<%= form_with(model: @work_type) do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description  %>
+  <%= f.submit 'Cadastrar Nova modalidade de trabalho' %>
+<% end %>

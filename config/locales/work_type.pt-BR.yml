@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      work_type: Modalidade de trabalho
+    attributes:
+      work_type:
+        description: Tipo

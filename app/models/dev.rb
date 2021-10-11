@@ -5,4 +5,5 @@ class Dev < ApplicationRecord
         :recoverable, :rememberable, :validatable
   
   has_one :dev_profile
+  has_many :projects
 end

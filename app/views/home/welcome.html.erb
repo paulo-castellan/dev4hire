@@ -6,6 +6,7 @@
   <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %>
 <% elsif user_signed_in? %>
   <div>Bem vindo <%= current_user.email %></div>
+  <%= link_to 'Área de Gerência de Projetos', projects_path %>
   <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
   <p>Bem vindo visitante, faça o login para navegar pelo site</p>

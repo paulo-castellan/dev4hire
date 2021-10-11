@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      project: Projeto
+    attributes:
+      project:
+        title: Título
+        detailed_description: Descrição detalhada
+        skill_sets: Habilidades desejadas
+        max_payment_per_hour: Remuneração máxima (por hora)
+        hire_date_limit: Data limite para inscrição
+        work_type_id: Modalidade de trabalho

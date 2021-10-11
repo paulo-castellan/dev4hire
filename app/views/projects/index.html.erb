@@ -1,0 +1,9 @@
+<%= link_to 'Criar novo projeto', new_project_path %>
+<%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %>
+
+<div>
+  <% @projects.each do |p| %>
+    <%= p.title %>
+    <%= p.hire_date_limit %>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_151311) do
+ActiveRecord::Schema.define(version: 2021_10_11_200051) do
 
   create_table "dev_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -45,6 +45,22 @@ ActiveRecord::Schema.define(version: 2021_10_10_151311) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "detailed_description"
+    t.string "skill_sets"
+    t.decimal "max_payment_per_hour"
+    t.date "hire_date_limit"
+    t.integer "user_id"
+    t.integer "dev_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "work_type_id"
+    t.index ["dev_id"], name: "index_projects_on_dev_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["work_type_id"], name: "index_projects_on_work_type_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,6 +71,12 @@ ActiveRecord::Schema.define(version: 2021_10_10_151311) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
