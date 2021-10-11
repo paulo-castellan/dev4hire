@@ -4,7 +4,14 @@
   <div>Bem vindo <%= current_dev.email %></div>
   <%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
   <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %>
+<% elsif user_signed_in? %>
+  <div>Bem vindo <%= current_user.email %></div>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
-  <%= link_to 'Entrar como Pessoa Desenvolvedora', new_dev_session_path %>
   <p>Bem vindo visitante, faça o login para navegar pelo site</p>
+  <nav>
+    <%= link_to 'Entrar como Pessoa Desenvolvedora', new_dev_session_path %>
+    <span>ou</span>
+    <%= link_to 'Entrar como Gerente de Projetos', new_user_session_path %>
+  </nav>
 <% end %>

@@ -6,9 +6,6 @@
     <% end %>
   </ul>
 <% end %>
-<% if notice %>
-  <%= notice %>
-<% end %>
 <% if @expertise.blank? %>
   <h3>Cadastre uma área de atuação para continuar</h3>
   <%= link_to 'Cadastrar área de atuação', new_expertise_path %>

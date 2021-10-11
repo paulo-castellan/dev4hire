@@ -11,7 +11,8 @@ class DevProfilesController < ApplicationController
     @dev_profile.dev = current_dev
     
     if @dev_profile.save
-      redirect_to @dev_profile, notice: 'Parabéns, seu perfil foi atualizado com sucesso'
+      redirect_to @dev_profile
+      flash.notice = 'Parabéns, seu perfil foi atualizado com sucesso'
     else
       render :new
     end

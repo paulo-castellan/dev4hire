@@ -1,15 +1,10 @@
 <h3>Esse é o seu Perfil</h3>
 
-<% if notice %>
-  <%= notice %>
-<% end %>
-
 <nav>
   <div><%= link_to 'Log out', destroy_dev_session_path, method: :delete %></div>
   <div><%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %></div>
 </nav>
   
-
 <dl>
   <dt>Nome completo</dt>
   <dd><%= @dev_profile.full_name %></dd>
