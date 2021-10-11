@@ -1,11 +1,9 @@
 class DevProfilesController < ApplicationController
+  before_action :authenticate_dev!
+
   def new
     @dev_profile = DevProfile.new
     @expertise = Expertise.all
-  end
-
-  def show
-    @dev_profile = DevProfile.find(params[:id])
   end
 
   def create
@@ -13,11 +11,29 @@ class DevProfilesController < ApplicationController
     @dev_profile.dev = current_dev
     
     if @dev_profile.save
-      redirect_to @dev_profile, notice: 'Parabéns, seu perfil foi completado com sucesso'
+      redirect_to @dev_profile, notice: 'Parabéns, seu perfil foi atualizado com sucesso'
     else
       render :new
     end
   end
+
+  def edit
+    @dev_profile = DevProfile.find(params[:id])
+    @expertise = Expertise.all
+  end
+
+
+  def show
+    @dev_profile = DevProfile.find(params[:id])
+  end
+
+  def update
+    @dev_profile = DevProfile.find(params[:id])
+    @dev_profile.update(dev_profile_params)
+    redirect_to dev_profile_path
+
+  end
+
 
   private
 

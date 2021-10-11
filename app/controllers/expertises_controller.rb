@@ -1,4 +1,6 @@
 class ExpertisesController < ApplicationController
+  before_action :authenticate_dev!
+
   def new
     @expertise = Expertise.new
   end

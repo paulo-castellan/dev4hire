@@ -6,7 +6,6 @@ describe 'dev view profile and' do
     
     login_as dev, scope: :dev
     visit root_path
-    click_on 'Editar perfil'
     click_on 'Cadastrar área de atuação'
     fill_in 'Área de atuação', with: 'Dev back-end'
     click_on 'Cadastrar'

@@ -1,7 +1,31 @@
+<h3>Esse é o seu Perfil</h3>
+
 <% if notice %>
   <%= notice %>
 <% end %>
 
-<%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
-<%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %>
-<%= @dev_profile.full_name %>
+<nav>
+  <div><%= link_to 'Log out', destroy_dev_session_path, method: :delete %></div>
+  <div><%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %></div>
+</nav>
+  
+
+<dl>
+  <dt>Nome completo</dt>
+  <dd><%= @dev_profile.full_name %></dd>
+  <dt>Nome social</dt>
+  <dd id='nome_social'><%= @dev_profile.social_name %></dd>
+  <dt>Data de nascimento</dt>
+  <dd><%= @dev_profile.date_of_birth %></dd>
+  <dt>Área de atuação</dt>
+  <dd><%= @dev_profile.expertise.field_of_expertise %></dd>
+  <dt>Formação educacional</dt>
+  <dd><%= @dev_profile.academic_education %></dd>
+  <dt>Experiência profissional</dt>
+  <dd><%= @dev_profile.previous_experience %></dd>
+  <dt>Sobre Você</dt>
+  <dd><%= @dev_profile.description %></dd>
+</dl>
+
+
+

@@ -1,0 +1,44 @@
+<% if dev_profile.errors.any? %>
+  <ul>
+    <% dev_profile.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: dev_profile) do |f| %>
+  <div>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>
+  </div>
+  <div>
+    <%= f.label :social_name %>
+    <%= f.text_field :social_name %>
+  </div>
+  <div>
+    <%= f.label :expertise_id %>
+    <%= f.collection_select :expertise_id, @expertise, :id, :field_of_expertise %>
+  </div>
+  <div>
+    <span>Não encontrou a sua área de atuação?</span>
+    <%= link_to 'Cadastrar área de atuação', new_expertise_path %>
+  </div>
+  <div>
+    <%= f.label :date_of_birth %>
+    <%= f.date_field :date_of_birth %>
+  </div>
+  <div>
+    <%= f.label :academic_education %>
+    <%= f.text_field :academic_education %>
+  </div>
+  <div>
+    <%= f.label :previous_experience %>
+    <%= f.text_field :previous_experience %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <%= f.submit 'Atualizar perfil' %>
+<% end %>
+
