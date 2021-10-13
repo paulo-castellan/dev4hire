@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   resources :dev_profiles
   resources :expertises, only: [:new, :create]  
-  resources :projects, only: [:index, :new, :create, :show]  
+  resources :projects, only: [:index, :new, :create, :show] do
+    get 'my_projects', on: :collection
+  end
   resources :work_types, only: [:new, :create]
-    
   root to: 'home#welcome'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

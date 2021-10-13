@@ -1,0 +1,17 @@
+<% if @projects.empty? %>
+  <div>
+    <p>Você ainda não cadastrou projetos</p>
+    <p><%= link_to 'Criar novo projeto', new_project_path %></p>
+  </div>
+<% else %>
+  <div>
+    <% @projects.each do |p| %>
+      <% if p.hire_date_limit > Date.current %>
+        <%= p.title %>
+        <%= p.skill_sets %>
+        <%= l p.hire_date_limit %>
+        <%= number_to_currency p.max_payment_per_hour %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

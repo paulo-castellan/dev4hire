@@ -1,9 +1,16 @@
-<%= link_to 'Criar novo projeto', new_project_path %>
-<%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Criar novo projeto', new_project_path %>
+  <%= link_to 'Meus projetos', my_projects_projects_path %>
+  <%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %>
+<% end %>
 
 <div>
   <% @projects.each do |p| %>
-    <%= p.title %>
-    <%= p.hire_date_limit %>
+    <% if p.hire_date_limit > Date.current %>
+      <%= p.title %>
+      <%= p.skill_sets %>
+      <%= l p.hire_date_limit %>
+      <%= number_to_currency p.max_payment_per_hour %>
+    <% end %>
   <% end %>
 </div>
