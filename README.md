@@ -1,6 +1,6 @@
 #Bem vindo ao Dev4Hire
 
-##Esse projeto tem como objetivo de fazer desenvolvedores de todos os níveis encontrarem projetos para trabalharem, ao mesmo tempo que faz gerente de projetos publicarem suas propostas e encontrarem  os dev com as melhores competências para seus projetos.
+Esse projeto tem como objetivo de fazer desenvolvedores de todos os níveis encontrarem projetos para trabalharem, ao mesmo tempo que faz gerente de projetos publicarem suas propostas e encontrarem  os dev com as melhores competências para seus projetos.
 
 O projeto é dividido em dois tipos de usuários.
 
