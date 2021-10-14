@@ -4,6 +4,12 @@
   <%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %>
 <% end %>
 
+<%= form_with url: search_path, method: :get do %>
+  <%= label_tag :q, 'Buscar' %>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Buscar' %>
+<% end %>
+
 <div>
   <% @projects.each do |p| %>
     <% if p.hire_date_limit > Date.current %>

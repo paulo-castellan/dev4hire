@@ -6,7 +6,7 @@ describe 'work type' do
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Área de Gerência de Projetos'
+    click_on 'Área de Projetos'
     click_on 'Adicionar uma Modalidade de Trabalho'
     fill_in 'Tipo', with: 'Remoto'
     click_on 'Cadastrar Nova modalidade de trabalho'

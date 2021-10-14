@@ -7,7 +7,7 @@ describe 'user project' do
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Área de Gerência de Projetos'
+    click_on 'Área de Projetos'
     click_on 'Criar novo projeto'
     fill_in 'Título', with: 'Aplicação web Front/Back'
     fill_in 'Descrição detalhada', with: 'Nesse projeto as equipes vão estar envolvidas na construção de uma
@@ -39,7 +39,7 @@ describe 'user project' do
     
     login_as jane, scope: :user
     visit root_path
-    click_on 'Área de Gerência de Projetos'
+    click_on 'Área de Projetos'
     click_on 'Meus projetos'
 
     expect(page).to have_content('Aplicação web Front/Back')
@@ -56,7 +56,7 @@ describe 'user project' do
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Área de Gerência de Projetos'
+    click_on 'Área de Projetos'
     click_on 'Criar novo projeto'
     click_on 'Cadastrar Projeto'
 
@@ -74,7 +74,7 @@ describe 'user project' do
 
     login_as user, scope: :user
     visit root_path
-    click_on 'Área de Gerência de Projetos'
+    click_on 'Área de Projetos'
     click_on 'Criar novo projeto'
     fill_in 'Título', with: 'Aplicação web Front/Back'
     fill_in 'Descrição detalhada', with: 'Nesse projeto as equipes vão estar envolvidas na construção de uma

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :new, :create, :show] do
     get 'my_projects', on: :collection
   end
+  get 'search', to:"home#search"
   resources :work_types, only: [:new, :create]
   root to: 'home#welcome'
 end
