@@ -1,1 +1,20 @@
-<h1>voce caiu aqui</h1>
+<h3><%= @project.title %></h1>
+<div>
+  <p>Descrição: <%= @project.detailed_description %></p>
+</div>
+<div>
+  <p>Habilidades desejadas: <%= @project.skill_sets %></p>
+</div>
+<div>
+  <p>Data limite de contratação: <%= l @project.hire_date_limit %></p>
+</div>
+<div>
+  <p>Preço máximo por hora: <%= number_to_currency @project.max_payment_per_hour %></p>
+</div>
+<div>
+  <p>Modalidade de trabalho: <%= @project.work_type.description %></p>
+</div>
+<div>
+<p>Gerente do projeto: <%= @project.user.email %></p>
+</div>
+

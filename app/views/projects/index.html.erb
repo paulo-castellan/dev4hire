@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-  <%= link_to 'Criar novo projeto', new_project_path %>
-  <%= link_to 'Meus projetos', my_projects_projects_path %>
-  <%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %>
+  <div><%= link_to 'Criar novo projeto', new_project_path %></div>
+  <div><%= link_to 'Meus projetos', my_projects_projects_path %></div>
+  <div><%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %></div>
 <% end %>
 
 <%= form_with url: search_path, method: :get do %>
@@ -13,10 +13,12 @@
 <div>
   <% @projects.each do |p| %>
     <% if p.hire_date_limit > Date.current %>
-      <%= p.title %>
-      <%= p.skill_sets %>
-      <%= l p.hire_date_limit %>
-      <%= number_to_currency p.max_payment_per_hour %>
+      <div>
+        <p>Título: <%= link_to p.title, p %></p>
+        <p>Habilidades desejadas: <%= p.skill_sets %></p>
+        <p>Data limite para contratação: <%= l p.hire_date_limit %></p>
+        <p>Pagamento máximo (por hora): <%= number_to_currency p.max_payment_per_hour %></p>
+      </div>
     <% end %>
   <% end %>
 </div>
