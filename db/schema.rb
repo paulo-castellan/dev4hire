@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_200051) do
+ActiveRecord::Schema.define(version: 2021_10_14_200955) do
 
   create_table "dev_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 2021_10_11_200051) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "project_propositions", force: :cascade do |t|
+    t.string "motivation"
+    t.decimal "expected_payment"
+    t.integer "available_hours_per_week"
+    t.string "expectations"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "dev_id"
+    t.index ["dev_id"], name: "index_project_propositions_on_dev_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "detailed_description"
@@ -52,11 +64,9 @@ ActiveRecord::Schema.define(version: 2021_10_11_200051) do
     t.decimal "max_payment_per_hour"
     t.date "hire_date_limit"
     t.integer "user_id"
-    t.integer "dev_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "work_type_id"
-    t.index ["dev_id"], name: "index_projects_on_dev_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
     t.index ["work_type_id"], name: "index_projects_on_work_type_id"
   end

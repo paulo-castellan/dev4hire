@@ -1,0 +1,21 @@
+<h1>voce caiu aqui</h1>
+
+<%= form_with(model: @project_proposition, url: project_project_propositions_path) do |pp| %>
+  <div>
+    <%= pp.label :motivation, 'Motivação' %>
+    <%= pp.text_field :motivation %>
+  </div>
+  <div>
+    <%= pp.label :expected_payment, 'Remuneração esperada' %>
+    <%= pp.text_field :expected_payment %>
+  </div>
+  <div>
+    <%= pp.label :available_hours_per_week, 'Disponibilidade semanal (em horas)' %>
+    <%= pp.text_field :available_hours_per_week %>
+  </div>
+  <div>
+    <%= pp.label :expectations, 'Expectativas' %>
+    <%= pp.text_field :expectations %>
+  </div>
+  <%= pp.submit 'Submeter' %>
+<% end %>

@@ -6,4 +6,5 @@ class Dev < ApplicationRecord
   
   has_one :dev_profile
   has_many :projects
+  has_many :project_propositions
 end
