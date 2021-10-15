@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   belongs_to :work_type
+  has_many :project_propositions
+  has_many :devs, through: :project_propositions
   
   validates :title, :detailed_description, :skill_sets, :max_payment_per_hour,
             :hire_date_limit, presence: true
