@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :work_types, only: [:new, :create]
   resources :projects, only: [:index, :new, :create, :show] do
     get 'my_projects', on: :collection
-    resources :project_propositions, only: [:new, :create]
+    resources :project_propositions, only: [:new, :create, :index], shallow: true do
+      post 'accept', on: :member
+      post 'deny', on: :member
+      post 'cancel', on: :member
+    end
   end
 
   get 'search', to:"home#search"

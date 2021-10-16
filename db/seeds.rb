@@ -10,7 +10,7 @@ project = Project.create!(title: 'Aplicação web Front/Back-end', detailed_desc
                           skill_sets: 'Ruby on Rails', hire_date_limit: '10/12/2021',
                           max_payment_per_hour: '200', work_type: work_type, user: user)
 Project.create!(title: 'Suporte Back-end', detailed_description: 'Esse projeto necessita de uma grande quantidade de dev back-end para expansão de aplicação web',
-                            skill_sets: 'Laravel/Node.js', hire_date_limit: 3.days.from_now,
+                            skill_sets: 'Laravel/Node.js', hire_date_limit: 5.days.from_now,
                             max_payment_per_hour: '500', work_type: work_type, user: user)
 Project.create!(title: 'Front-end Needed', detailed_description: 'Estamos procurando por Devs freelancers para realizarem a criação de telas temáticas URGENTE!',
                               skill_sets: 'React JS/Vue JS', hire_date_limit: 3.days.from_now,

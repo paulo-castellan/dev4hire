@@ -19,9 +19,47 @@
 <div>
   <p>Gerente do projeto: <%= @project.user.email %></p>
 </div>
-<% if @dev.project_propositions.present? %>
-  <p>Você já declarou interesse nesse projeto</p>
-<% else %>
+
+<% if @project.project_propositions.empty? %>
   <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+<% else %>
+  <% @project.project_propositions.each do |pp| %>
+    <% if pp.dev == current_dev %>
+      <p>Você já declarou interesse nesse projeto<%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id)  %></p>
+    <% else %>
+      <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+    <% end %>
+  <% end %>
 <% end %>
 
+
+<% if user_signed_in? and @project.user.email == current_user.email %>
+  <% @project.project_propositions.each do |pp| %>
+    <div>
+      <h3>Propostas de participação </h3>
+      <p>Nome completo do Dev: <%= pp.dev.dev_profile.full_name %></p>
+      <p>Motivação: <%= pp.motivation %></p>
+      <p>Pagamento esperado: <%= number_to_currency pp.expected_payment %></p>
+      <p>Horas por semana: <%= pp.available_hours_per_week %></p>
+      <p>Expectativas: <%= pp.expectations %></p>
+    </div>
+
+    <% if pp.status == 'pending' %>
+      <p>
+        <%= link_to 'Aceitar proposta', accept_project_proposition_path(pp.id), method: :post %>
+      </p>
+      
+      <%= form_with(model: @project.project_propositions, url: deny_project_proposition_path(pp.id)) do |ppd| %>
+        <div>
+          <%= ppd.label :rejection_motive, 'Motivo da rejeição' %>
+          <%= ppd.text_field :rejection_motive %>
+        </div>
+        <%= ppd.submit 'Rejeitar proposta' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
+<%# link_to 'Rejeitar proposta', deny_project_proposition_path(pp.id), method: :post %>

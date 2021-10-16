@@ -1,4 +1,12 @@
-<h1>voce caiu aqui</h1>
+<h1>Cadastro de nteresse</h1>
+<% if @project_proposition.errors.any? %>
+  <ul>
+    <% @project_proposition.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <%= form_with(model: @project_proposition, url: project_project_propositions_path) do |pp| %>
   <div>

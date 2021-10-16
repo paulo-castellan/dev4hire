@@ -15,3 +15,10 @@
     <% end %>
   </div>
 <% end %>
+
+<% @projects.each do |p| %>
+  <%= p.title %>
+  <% p.project_propositions.each do |pp| %>
+    <%= pp.motivation %>
+  <% end %>
+<% end %>

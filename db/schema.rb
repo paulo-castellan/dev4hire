@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_212006) do
+ActiveRecord::Schema.define(version: 2021_10_16_155556) do
 
   create_table "dev_profiles", force: :cascade do |t|
     t.string "full_name"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 2021_10_14_212006) do
     t.datetime "updated_at", null: false
     t.integer "dev_id"
     t.integer "project_id"
+    t.string "rejection_motive"
+    t.string "cancel_motive"
+    t.date "accepted_time"
     t.index ["dev_id"], name: "index_project_propositions_on_dev_id"
     t.index ["project_id"], name: "index_project_propositions_on_project_id"
   end

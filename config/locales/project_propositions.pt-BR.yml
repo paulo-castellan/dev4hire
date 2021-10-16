@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      project_proposition: Proposta de interesse
+    attributes:
+      project_proposition:
+        motivation: Motivação
+        expected_payment: Remuneração esperada
+        available_hours_per_week: Disponibilidade semanal (em horas)
+        expectations: Expectativas
+    

@@ -7,7 +7,7 @@
   <%= link_to 'Área de projetos', projects_path %>
 <% elsif user_signed_in? %>
   <div>Bem vindo <%= current_user.email %></div>
-  <%= link_to 'Área de Projetos', projects_path %>
+  <%= link_to 'Área de projetos', projects_path %>
   <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <% else %>
   <p>Bem vindo visitante, faça o login para navegar pelo site</p>

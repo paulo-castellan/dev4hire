@@ -111,6 +111,4 @@ describe 'Dev' do
     expect(page).not_to have_content 'Front-end Needed'
 
   end
-
-
 end
