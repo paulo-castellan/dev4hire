@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :my_projects]
 
   def index
-    @projects = Project.all
+    @projects = Project.where("title LIKE ?", "%#{params[:q]}%")
   end
 
   def show
@@ -32,12 +32,16 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
   end
   
+  def search
+    @projects = Project.where("title LIKE ?", "%#{params[:q]}%")
+  end
+
   private
 
   def project_params
     params.require(:project).permit(:title, :detailed_description, :skill_sets,
                                     :max_payment_per_hour, :hire_date_limit,
-                                    :user_id, :work_type_id)
+                                    :user_id, :work_type_id, :q)
   end
 
   def authenticate_person
@@ -46,4 +50,6 @@ class ProjectsController < ApplicationController
     flash.notice = 'Você deve estar logado para acessar essa página'
     redirect_to root_path
   end
+
+  
 end

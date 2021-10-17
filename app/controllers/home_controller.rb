@@ -9,12 +9,7 @@ class HomeController < ApplicationController
     end
   end
 
-
-  def search
-    @projects = Project.where('title like ? OR detailed_description like ?', "%#{params[:q]}%", "%#{params[:q]}%")
-  end
   private
-
   def authenticate_person
     return if dev_signed_in? or user_signed_in?
 

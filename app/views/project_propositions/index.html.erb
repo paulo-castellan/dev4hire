@@ -1,8 +1,8 @@
 <% @project_proposition.each do |pp| %>
   <% if pp.cancel_motive.present? %>
     <p>Título: <%= pp.project.title %></p>
+    <div>Razão do cancelamento: <%= pp.cancel_motive %></div>
   <% else %>
-    <div>Cancelou? <%= pp.cancel_motive %></div>
     <div>Título: <%= pp.project.title %></div>
     <div>Motivação: <%= pp.motivation %></div>
     <div>Remuneração esperada: <%= number_to_currency pp.expected_payment %></div>
@@ -12,11 +12,11 @@
     <% if pp.rejection_motive.present? %>
       <div>Motivo da rejeição: <%= pp.rejection_motive %></div>
     <% end %>
-  <% end %>
-  <%= form_with(model: @project_proposition, url: cancel_project_proposition_path(pp.id)) do |pp| %>
-    <%= pp.label :cancel_motive, 'Motivo do cancelamento: ' %>
-    <%= pp.text_field :cancel_motive %>
-    <%= pp.submit 'Cancelar proposta' %>
+    <%= form_with(model: @project_proposition, url: cancel_project_proposition_path(pp.id)) do |pp| %>
+      <%= pp.label :cancel_motive, 'Motivo do cancelamento: ' %>
+      <%= pp.text_field :cancel_motive %>
+      <%= pp.submit 'Cancelar proposta' %>
+    <% end %>
   <% end %>
 <% end %>
 

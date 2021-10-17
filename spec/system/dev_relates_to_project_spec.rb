@@ -106,9 +106,9 @@ describe 'Dev' do
     fill_in 'Buscar', with: 'Back-end'
     click_on 'Buscar'
 
-    expect(page).to have_content 'Aplicação web Front/Back-end'
-    expect(page).to have_content 'Suporte Back-end'
-    expect(page).not_to have_content 'Front-end Needed'
-
+    expect(page).to have_content('Aplicação web Front/Back-end')
+    expect(page).to have_content('Suporte Back-end')
+    expect(page).not_to have_content('Front-end Needed')
+    expect(page).not_to have_content('React JS')
   end
 end

@@ -13,9 +13,8 @@ Rails.application.routes.draw do
       post 'cancel', on: :member
     end
   end
-
-  get 'search', to:"home#search"
   
-
+  get '/search', to: "projects#search"
+  
   root to: 'home#welcome'
 end
