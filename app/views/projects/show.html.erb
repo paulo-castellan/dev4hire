@@ -20,14 +20,16 @@
   <p>Gerente do projeto: <%= @project.user.email %></p>
 </div>
 
-<% if @project.project_propositions.empty? %>
-  <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
-<% else %>
-  <% @project.project_propositions.each do |pp| %>
-    <% if pp.dev == current_dev %>
-      <p>Você já declarou interesse nesse projeto<%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id)  %></p>
-    <% else %>
-      <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+<% if dev_signed_in? %>
+  <% if @project.project_propositions.empty? %>
+    <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+  <% else %>
+    <% @project.project_propositions.each do |pp| %>
+      <% if pp.dev == current_dev %>
+        <p>Você já declarou interesse nesse projeto<%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id)  %></p>
+      <% else %>
+        <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

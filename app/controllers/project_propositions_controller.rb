@@ -35,7 +35,13 @@ class ProjectPropositionsController < ApplicationController
 
   def deny
     @project_proposition = ProjectProposition.find(params[:id])
-    @project_proposition.rejected!
+    @project_proposition.update(params.require(:project_proposition).permit(:rejection_motive))
+    if @project_proposition.rejection_motive.blank?
+      flash.notice = 'Motivo da rejeição deve ser fornecido'
+    else
+      @project_proposition.rejected!
+      flash.notice = 'Você rejeitou a proposta'
+    end
     redirect_to @project_proposition.project
   end
 

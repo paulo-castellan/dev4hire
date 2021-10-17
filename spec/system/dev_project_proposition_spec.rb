@@ -157,7 +157,7 @@ describe 'project propositon' do
     project = Project.create!(title: 'Aplicação web Front/Back', detailed_description: 'Nesse projeto as equipes vão estar envolvidas na construção de uma aplicação web para uma grande empresa de mineração',
                               skill_sets: 'Ruby on Rails', hire_date_limit: '10/12/2021',
                               max_payment_per_hour: '200', work_type: work_type, user: peter)
-    travel_to 4.days.ago do
+    travel_to 5.days.ago do
       project_proposition = ProjectProposition.create!(motivation: 'Quero dinheiro', expected_payment: 200,
                                                       available_hours_per_week: 30, dev: jonas, project: project,
                                                       expectations: 'Desenvolver minhas habilidades de dev', accepted_time: Date.today)
@@ -171,7 +171,6 @@ describe 'project propositon' do
     fill_in 'Motivo do cancelamento', with: 'Encontrei outra proposta, não tenho mais disponibilidade' 
     click_on 'Cancelar proposta'
 
-    #expect(current_path).to eq(project_project_propositions_path(project_proposition.project.id))
     expect(page).to have_content('Você não pode cancelar o projeto depois de 3 dias após o aceite')
   end
 end
