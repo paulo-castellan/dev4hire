@@ -1,25 +1,19 @@
 <h3>Esse é o seu Perfil</h3>
 
-<nav>
-  <div><%= link_to 'Log out', destroy_dev_session_path, method: :delete %></div>
-  <div><%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %></div>
-</nav>
-  
+<% if dev_signed_in?%>
+  <nav>
+    <div><%= link_to 'Log out', destroy_dev_session_path, method: :delete %></div>
+    <div><%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %></div>
+  </nav>
+<% end %>
 <dl>
-  <dt>Nome completo</dt>
-  <dd><%= @dev_profile.full_name %></dd>
-  <dt>Nome social</dt>
-  <dd id='nome_social'><%= @dev_profile.social_name %></dd>
-  <dt>Data de nascimento</dt>
-  <dd><%= @dev_profile.date_of_birth %></dd>
-  <dt>Área de atuação</dt>
-  <dd><%= @dev_profile.expertise.field_of_expertise %></dd>
-  <dt>Formação educacional</dt>
-  <dd><%= @dev_profile.academic_education %></dd>
-  <dt>Experiência profissional</dt>
-  <dd><%= @dev_profile.previous_experience %></dd>
-  <dt>Sobre Você</dt>
-  <dd><%= @dev_profile.description %></dd>
+  <dd>Nome completo: <%= @dev_profile.full_name %></dd>
+  <dd id='nome_social'>Nome social: <%= @dev_profile.social_name %></dd>
+  <dd>Data de nascimento: <%=l @dev_profile.date_of_birth %></dd>
+  <dd>Área de atuação: <%= @dev_profile.expertise.field_of_expertise %></dd>
+  <dd>Formação educacional: <%= @dev_profile.academic_education %></dd>
+  <dd>Experiência profissional: <%= @dev_profile.previous_experience %></dd>
+  <dd>Sobre você: <%= @dev_profile.description %></dd>
 </dl>
 
 

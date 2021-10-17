@@ -1,15 +1,6 @@
 <h1>Bem vindo ao Dev4Hire</h1>
 
-<% if dev_signed_in? %>
-  <div>Bem vindo <%= current_dev.email %></div>
-  <%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
-  <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %>
-  <%= link_to 'Área de projetos', projects_path %>
-<% elsif user_signed_in? %>
-  <div>Bem vindo <%= current_user.email %></div>
-  <%= link_to 'Área de projetos', projects_path %>
-  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-<% else %>
+<% unless dev_signed_in? || user_signed_in? %>
   <p>Bem vindo visitante, faça o login para navegar pelo site</p>
   <nav>
     <%= link_to 'Entrar como Pessoa Desenvolvedora', new_dev_session_path %>

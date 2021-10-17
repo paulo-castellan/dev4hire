@@ -1,6 +1,6 @@
-<h3>
+<h1>
   <%= @project.title %>
-</h3>
+</h1>
 <div>
   <p>Descrição: <%= @project.detailed_description %></p>
 </div>
@@ -21,36 +21,49 @@
 </div>
 
 <% if dev_signed_in? %>
-  <% if @project.project_propositions.empty? %>
-    <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
-  <% else %>
-    <% @project.project_propositions.each do |pp| %>
-      <% if pp.dev == current_dev %>
-        <p>Você já declarou interesse nesse projeto<%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id)  %></p>
-      <% else %>
-        <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+  <% @dev.project_propositions.each do |dpp| %>
+    <% if dpp.project == @project and dpp.status == 'accepted' %>
+      <p>Você foi aceito para esse projeto!</p>
+      <h2>Equipe aceita para esse projeto</h2>
+      <% @project.project_propositions.each do |pp| %>
+        <% if pp.status == 'accepted' %>
+          <strong><%= link_to "#{pp.dev.dev_profile.full_name}", dev_profile_path(pp.dev.id) %></p></strong>
+        <% end %>
       <% end %>
+    <% elsif dpp.project == @project and dpp.status == 'rejected' %>
+      <p>Você foi recusado pelo Gerente desse projeto</p>
+      <p>Motivo da Recusa: <%= dpp.rejection_motive %></p>
+    <% elsif dpp.project == @project and dpp.status == 'pending' %>
+      <p>Você já declarou intresse nesse projeto! </p>
     <% end %>
   <% end %>
+  <%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id) %>
 <% end %>
 
 
-<% if user_signed_in? and @project.user.email == current_user.email %>
-  <% @project.project_propositions.each do |pp| %>
-    <div>
-      <h3>Propostas de participação </h3>
-      <p>Nome completo do Dev: <%= pp.dev.dev_profile.full_name %></p>
-      <p>Motivação: <%= pp.motivation %></p>
-      <p>Pagamento esperado: <%= number_to_currency pp.expected_payment %></p>
-      <p>Horas por semana: <%= pp.available_hours_per_week %></p>
-      <p>Expectativas: <%= pp.expectations %></p>
-    </div>
 
+
+<% if @project.devs.include?(@dev) and dev_signed_in? %>
+
+  <p>Você já declarou interesse nesse projeto</p>
+<% elsif dev_signed_in? %>
+  <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>
+<% end %>
+
+<% if user_signed_in? and @project.user.email == current_user.email %>
+  <h3>Propostas de participação </h3>
+  <% @project.project_propositions.each do |pp| %>
     <% if pp.status == 'pending' %>
+      <div>
+        <p><strong>Nome completo do Dev:</strong> <%= link_to "#{pp.dev.dev_profile.full_name}", dev_profile_path(pp.dev.id) %></p>
+        <p>Motivação: <%= pp.motivation %></p>
+        <p>Pagamento esperado: <%= number_to_currency pp.expected_payment %></p>
+        <p>Horas por semana: <%= pp.available_hours_per_week %></p>
+        <p>Expectativas: <%= pp.expectations %></p>
+      </div>
       <p>
         <%= link_to 'Aceitar proposta', accept_project_proposition_path(pp.id), method: :post %>
       </p>
-      
       <%= form_with(model: @project.project_propositions, url: deny_project_proposition_path(pp.id)) do |ppd| %>
         <div>
           <%= ppd.label :rejection_motive, 'Motivo da rejeição' %>
@@ -61,7 +74,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-
-
-<%# link_to 'Rejeitar proposta', deny_project_proposition_path(pp.id), method: :post %>

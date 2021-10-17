@@ -4,6 +4,7 @@ class ProjectPropositionsController < ApplicationController
 
   def index
     @project_proposition = ProjectProposition.all
+    @dev = current_dev
   end
 
   def new

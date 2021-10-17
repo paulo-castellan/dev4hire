@@ -3,12 +3,13 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :my_projects]
 
   def index
-    @projects = Project.where("title LIKE ?", "%#{params[:q]}%")
+    @projects = Project.all
   end
 
   def show
     @project = Project.find(params[:id])
     @dev = current_dev
+    @project_proposition = current_dev
   end
 
   def new
