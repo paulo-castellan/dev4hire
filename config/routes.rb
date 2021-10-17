@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :dev_profiles
   resources :expertises, only: [:new, :create]  
   resources :work_types, only: [:new, :create]
-  resources :projects, only: [:index, :new, :create, :show] do
+  resources :projects, only: [:index, :new, :create, :show], shallow: true do
+    post 'end_project', on: :member
     get 'my_projects', on: :collection
     resources :project_propositions, only: [:new, :create, :index], shallow: true do
       post 'accept', on: :member

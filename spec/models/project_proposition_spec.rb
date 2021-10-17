@@ -64,5 +64,6 @@ describe ProjectProposition do
       
       expect(project_proposition.errors.full_messages_for(:available_hours_per_week)).to include('Disponibilidade semanal (em horas) deve ser maior que 0')
     end
+
   end
 end

@@ -20,6 +20,14 @@
   <p>Gerente do projeto: <%= @project.user.email %></p>
 </div>
 
+<% if user_signed_in? %>
+  <%= form_with(model: @project, url: end_project_project_path(@project.id), method: :post) do |epp| %>
+    <%= epp.submit 'Terminar projeto' %>
+  <% end %>
+<% end %>
+
+
+
 <% if dev_signed_in? %>
   <% @dev.project_propositions.each do |dpp| %>
     <% if dpp.project == @project and dpp.status == 'accepted' %>
@@ -40,11 +48,7 @@
   <%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id) %>
 <% end %>
 
-
-
-
 <% if @project.devs.include?(@dev) and dev_signed_in? %>
-
   <p>Você já declarou interesse nesse projeto</p>
 <% elsif dev_signed_in? %>
   <%= link_to 'Declarar interesse de participação', new_project_project_proposition_path(@project.id) %>

@@ -12,7 +12,7 @@
 
 <div>
   <% @projects.each do |p| %>
-    <% if p.hire_date_limit > Date.current %>
+    <% if p.hire_date_limit > Date.current and p.status != 'inactive' %>
       <div>
         <p>Título: <%= link_to p.title, p %></p>
         <p>Habilidades desejadas: <%= p.skill_sets %></p>

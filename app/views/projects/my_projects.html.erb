@@ -7,10 +7,17 @@
   <div>
     <% @projects.each do |p| %>
       <% if p.hire_date_limit > Date.current %>
-        <%= p.title %>
-        <%= p.skill_sets %>
-        <%= l p.hire_date_limit %>
-        <%= number_to_currency p.max_payment_per_hour %>
+        <dl>
+          <dt>Título:</dt>
+          <dd><%= p.title %></dd>
+          <dt>Habilidades desejadas: </dt>
+          <dd><%= p.skill_sets %></dd>
+          <dt>Data limite para contratação</dt>
+          <dd><%= l p.hire_date_limit %></dd>
+          <dt>Preço máximo por hora:</dt>
+          <dd><%= number_to_currency p.max_payment_per_hour %></dd>
+          
+        </dl>
       <% end %>
     <% end %>
   </div>

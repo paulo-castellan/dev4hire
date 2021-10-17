@@ -32,6 +32,12 @@ class ProjectsController < ApplicationController
   def my_projects
     @projects = current_user.projects
   end
+
+  def end_project
+    @project = Project.find(params[:id])
+    @project.inactive!
+    redirect_to my_projects_projects_path
+  end
   
   def search
     @projects = Project.where("title LIKE ?", "%#{params[:q]}%")

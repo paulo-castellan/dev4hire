@@ -8,6 +8,7 @@ class Project < ApplicationRecord
             :hire_date_limit, presence: true
   validate :hire_date_limit_in_the_future
 
+  enum status: { active: 0, inactive: 10 }
   private
 
   def hire_date_limit_in_the_future
