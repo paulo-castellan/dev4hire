@@ -114,4 +114,17 @@ describe 'dev profile' do
     expect(page).not_to have_css('.nome_social', text: 'João Carlos')
   end
 
+  it 'field of expertise is unique' do
+    dev = Dev.create!(email: 'dev@dev.com', password: '123456')
+    back_end = Expertise.create!(field_of_expertise: 'Dev back-end')
+    
+    login_as dev, scope: :dev
+    visit root_path
+    click_on 'Cadastrar área de atuação'
+    fill_in 'Área de atuação', with: 'Dev back-end'
+    click_on 'Cadastrar'
+
+    expect(current_path).to eq(new_expertise_path)
+    expect(page).to have_content('Área de atuação deve ser única')
+  end
 end

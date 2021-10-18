@@ -12,7 +12,8 @@ class ExpertisesController < ApplicationController
       redirect_to new_dev_profile_path
       flash.notice = 'Agora complete seu perfil'
     else
-      render :new
+      flash.notice = 'Área de atuação deve ser única'
+      redirect_to new_expertise_path
     end
   end
 end

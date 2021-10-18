@@ -1,3 +1,10 @@
+<% if @expertise.errors.any? %>
+  <ul>
+    <% @expertise.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= form_with(model: @expertise) do |f| %>
     <div>
       <%= f.label :field_of_expertise %>
