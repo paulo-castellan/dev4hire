@@ -42,7 +42,7 @@ class DevProfilesController < ApplicationController
   def dev_profile_params
     params.require(:dev_profile).permit(:full_name, :social_name, :date_of_birth,
                                         :academic_education, :previous_experience,
-                                        :description, :expertise_id, :dev_id)
+                                        :description, :expertise_id, :dev_id, :avatar)
   end
 
   def authenticate_person

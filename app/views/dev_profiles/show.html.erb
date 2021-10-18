@@ -9,6 +9,7 @@
 <dl>
   <dd>Nome completo: <%= @dev_profile.full_name %></dd>
   <dd id='nome_social'>Nome social: <%= @dev_profile.social_name %></dd>
+  <dd><%= image_tag @dev_profile.avatar, width: '150px' %></dd>
   <dd>Data de nascimento: <%=l @dev_profile.date_of_birth %></dd>
   <dd>Área de atuação: <%= @dev_profile.expertise.field_of_expertise %></dd>
   <dd>Formação educacional: <%= @dev_profile.academic_education %></dd>

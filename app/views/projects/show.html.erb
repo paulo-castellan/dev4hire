@@ -26,6 +26,14 @@
   <% end %>
 <% end %>
 
+<% if user_signed_in? %>
+  <%= form_with(model: @project, url: end_accepting_devs_project_path(@project.id), method: :post) do |epp| %>
+    <%= epp.submit 'Terminar recrutamento' %>
+  <% end %>
+<% end %>
+
+
+
 
 
 <% if dev_signed_in? %>

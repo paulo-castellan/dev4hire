@@ -9,6 +9,10 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  #Active Storage configs
+  config.active_storage.service = :local
+  config.active_job.queue_adapter = :inline
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

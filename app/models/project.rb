@@ -9,6 +9,9 @@ class Project < ApplicationRecord
   validate :hire_date_limit_in_the_future
 
   enum status: { active: 0, inactive: 10 }
+
+  enum accepting_devs: { yes: 20, no: 30}
+
   private
 
   def hire_date_limit_in_the_future

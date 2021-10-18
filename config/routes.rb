@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :work_types, only: [:new, :create]
   resources :projects, only: [:index, :new, :create, :show], shallow: true do
     post 'end_project', on: :member
+    post 'end_accepting_devs', on: :member
     get 'my_projects', on: :collection
     resources :project_propositions, only: [:new, :create, :index], shallow: true do
       post 'accept', on: :member
@@ -14,8 +15,6 @@ Rails.application.routes.draw do
       post 'cancel', on: :member
     end
   end
-  
   get '/search', to: "projects#search"
-  
   root to: 'home#welcome'
 end

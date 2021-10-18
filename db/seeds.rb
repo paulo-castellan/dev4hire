@@ -10,6 +10,7 @@ peter_profile = DevProfile.create!(full_name: 'Peter Parker', social_name: 'Spid
                                 date_of_birth: '14/05/1995', academic_education: 'Curso tecnológico em computação',
                                 previous_experience: 'Freelancer em vários pequenos projetos',
                                 dev: peter, expertise: expertise, description: 'Nascido para vencer e codar')
+
 jane = Dev.create!(email: 'jane@doe.com', password: 123456)
 jane_profile = DevProfile.create!(full_name: 'Jane Doe', social_name: 'Fake Woman',
                                   date_of_birth: '05/03/1978', academic_education: 'Graduação, Mestrado e Doutorado em aplicações web de alto rendimento',
@@ -38,3 +39,7 @@ ProjectProposition.create!(motivation: 'Em busca de aprender a codar mais e melh
 ProjectProposition.create!(motivation: 'Tempo disponível, estou em busca de novos projetos', expected_payment: 800,
                           available_hours_per_week: 10, expectations: 'Conhecer novos devs, e coordenar equipes com variada capacidade',
                           dev: jane, project: project)
+
+jonas_profile.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed_images/profile_image.jpg')), filename: 'profile_image.jpg', content_type: 'image/jpg')
+peter_profile.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed_images/profile_image2.jpg')), filename: 'profile_image2.jpg', content_type: 'image/jpg')
+jane_profile.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed_images/profile_image3.jpg')), filename: 'profile_image3.jpg', content_type: 'image/jpg')

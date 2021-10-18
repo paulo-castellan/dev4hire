@@ -20,11 +20,13 @@
         <div>Bem vindo <%= current_dev.email %></div>
         <%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
         <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %>
+        <%= link_to 'Área de projetos', projects_path %>
       <% elsif user_signed_in? %>
         <div>Bem vindo <%= current_user.email %></div>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Área de projetos', projects_path %>
       <% end %>
-      <%= link_to 'Área de projetos', projects_path %>
+      
     </nav>
     <%= yield %>
   </body>

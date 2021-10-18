@@ -39,6 +39,13 @@ class ProjectsController < ApplicationController
     redirect_to my_projects_projects_path
   end
   
+  def end_accepting_devs
+    @project = Project.find(params[:id])
+    @project.no!
+    flash.notice = 'Encerrada a contratação de Devs'
+    redirect_to my_projects_projects_path
+  end
+
   def search
     @projects = Project.where("title LIKE ?", "%#{params[:q]}%")
   end
