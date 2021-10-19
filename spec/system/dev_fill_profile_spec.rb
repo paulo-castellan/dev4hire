@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'dev profile' do
+  include ActiveSupport::Testing::TimeHelpers
   it 'filled succesfully' do
     dev = Dev.create!(email: 'dev@dev.com', password: '123456')
     back_end = Expertise.create!(field_of_expertise: 'Dev back-end')
@@ -57,6 +58,26 @@ describe 'dev profile' do
     click_on 'Atualizar perfil'
 
     expect(page).to have_content('Data de nascimento inválida')
+    expect(DevProfile.count).to eq(0)
+  end
+
+  it 'use a date in the future to fill date of birth' do
+    dev = Dev.create!(email: 'dev@dev.com', password: '123456')
+    expertise = Expertise.create!(field_of_expertise: 'Dev back-end')
+    expertise = Expertise.create!(field_of_expertise: 'Dev front-end')
+
+    login_as dev, scope: :dev
+    visit root_path
+    fill_in 'Nome completo', with: 'João Moraes'
+    fill_in 'Nome social', with: 'João Moraes'
+    select 'Dev back-end', from: 'Área de atuação'
+    fill_in 'Data de nascimento', with: 5.days.from_now
+    fill_in 'Formação educacional', with: 'Graduação em SI pela UFPE'
+    fill_in 'Sobre você', with: 'Sou uma programador Back end com experiência em Rails'
+    fill_in 'Experiência profissional', with: 'Estágio em empresa de TI com foco em debbug'
+    click_on 'Atualizar perfil'
+
+    expect(page).to have_content('Data de nascimento não pode ser em datas futuras')
     expect(DevProfile.count).to eq(0)
   end
 

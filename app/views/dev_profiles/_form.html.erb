@@ -6,43 +6,36 @@
   </ul>
 <% end %>
 
-<%= form_with(model: dev_profile) do |f| %>
-  <div>
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
-  </div>
-  <div>
-    <%= f.label :social_name %>
-    <%= f.text_field :social_name %>
-  </div>
-  <div>
-    <%= f.label :expertise_id %>
-    <%= f.collection_select :expertise_id, @expertise, :id, :field_of_expertise %>
-  </div>
-  <div>
+<%= form_with(model: dev_profile, local: true) do |f| %>
+    <dl>
+    <dt><%= f.label :full_name %></dt>
+    <dd><%= f.text_field :full_name %></dd>
+
+    <dt><%= f.label :social_name %></dt>
+    <dd><%= f.text_field :social_name %></dd>
+
+    <dt><%= f.label :expertise_id %></dt>
+    <dd><%= f.collection_select :expertise_id, @expertise, :id, :field_of_expertise %></dd>
+
     <span>Não encontrou a sua área de atuação?</span>
     <%= link_to 'Cadastrar área de atuação', new_expertise_path %>
-  </div>
-  <div>
-    <%= f.label :date_of_birth %>
-    <%= f.date_field :date_of_birth %>
-  </div>
-  <div>
-    <%= f.label :academic_education %>
-    <%= f.text_field :academic_education %>
-  </div>
-  <div>
-    <%= f.label :previous_experience %>
-    <%= f.text_field :previous_experience %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar, accept: 'image/png, image/gif, image/jpeg' %>
-  </div>
-  <%= f.submit 'Atualizar perfil' %>
+
+    <dt><%= f.label :date_of_birth %></dt>
+    <dd><%= f.date_field :date_of_birth %></dd>
+
+    <dt><%= f.label :academic_education %></dt>
+    <dd><%= f.text_field :academic_education %></dd>
+
+    <dt><%= f.label :previous_experience %></dt>
+    <dd><%= f.text_field :previous_experience %></dd>
+
+    <dt><%= f.label :description %></dt>
+    <dd><%= f.text_field :description %></dd>
+
+    <dt><%= f.label :avatar %></dt>
+    <dd><%= f.file_field :avatar, accept: 'image/png, image/gif, image/jpeg' %></dd>
+
+  <div><%= f.submit 'Atualizar perfil' %></div>
+  </dl>
 <% end %>
 

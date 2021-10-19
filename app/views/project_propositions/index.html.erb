@@ -1,23 +1,33 @@
 <% @project_proposition.each do |pp| %>
   <% if pp.dev == current_dev %>
     <% if pp.cancel_motive.present? %>
-      <p>Título: <%= pp.project.title %></p>
-      <div>Razão do cancelamento: <%= pp.cancel_motive %></div>
+      <dl>
+        <dt>Título: <%= pp.project.title %></dt>
+        <dd>Razão do cancelamento: <%= pp.cancel_motive %></dd>
+      </dl>
     <% else %>
-      <div>Título: <%= pp.project.title %></div>
-      <div>Motivação: <%= pp.motivation %></div>
-      <div>Remuneração esperada: <%= number_to_currency pp.expected_payment %></div>
-      <div>Horas disponíveis: <%= pp.available_hours_per_week %></div>
-      <div>Expectativas: <%= pp.expectations %></div>
-      <div>Condição: <%= pp.status %></div>
+      <dl>
+      <dt>Título: </dt>
+      <dd><%= pp.project.title %></dd>
+      <dt>Motivação: </dt>
+      <dd><%= pp.motivation %></dd>
+      <dt>Remuneração esperada:</dt>
+      <dd><%= number_to_currency pp.expected_payment %></dd>
+      <dt>Horas disponíveis:</dt>
+      <dd><%= pp.available_hours_per_week %></dd>
+      <dt>Expectativas:</dt>
+      <dd><%= pp.expectations %></dd>
+      <dt>Condição: </dt>
+      <dd><%= pp.status %></dd>
       <% if pp.rejection_motive.present? %>
-        <div>Motivo da rejeição: <%= pp.rejection_motive %></div>
+        <dt>Motivo da rejeição:</dt>
+        <dd><%= pp.rejection_motive %></dd>
       <% end %>
       <%= form_with(model: @project_proposition, url: cancel_project_proposition_path(pp.id)) do |pp| %>
-        <%= pp.label :cancel_motive, 'Motivo do cancelamento: ' %>
-        <%= pp.text_field :cancel_motive %>
-        <%= pp.submit 'Cancelar proposta' %>
+        <dt><%= pp.label :cancel_motive, 'Motivo do cancelamento: ' %></dt>
+        <dd><%= pp.text_field :cancel_motive %> <%= pp.submit 'Cancelar proposta' %></dd>
       <% end %>
+      </dl>
     <% end %>
   <% end %>
 <% end %>

@@ -16,16 +16,8 @@
           <dd><%= l p.hire_date_limit %></dd>
           <dt>Preço máximo por hora:</dt>
           <dd><%= number_to_currency p.max_payment_per_hour %></dd>
-          
         </dl>
       <% end %>
     <% end %>
   </div>
-<% end %>
-
-<% @projects.each do |p| %>
-  <%= p.title %>
-  <% p.project_propositions.each do |pp| %>
-    <%= pp.motivation %>
-  <% end %>
 <% end %>

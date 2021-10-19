@@ -1,38 +1,22 @@
-<h1>
-  <%= @project.title %>
-</h1>
-<div>
-  <p>Descrição: <%= @project.detailed_description %></p>
-</div>
-<div>
-  <p>Habilidades desejadas: <%= @project.skill_sets %></p>
-</div>
-<div>
-  <p>Data limite de contratação: <%= l @project.hire_date_limit %></p>
-</div>
-<div>
-  <p>Preço máximo por hora: <%= number_to_currency @project.max_payment_per_hour %></p>
-</div>
-<div>
-  <p>Modalidade de trabalho: <%= @project.work_type.description %></p>
-</div>
-<div>
-  <p>Gerente do projeto: <%= @project.user.email %></p>
-</div>
+<dl>
+  <dl><strong><%= @project.title %></strong></dl>
+  <dl>Descrição: <%= @project.detailed_description %></dl> 
+  <dl>Habilidades desejadas: <%= @project.skill_sets %></dl>
+  <dl>Data limite de contratação: <%= l @project.hire_date_limit %></dl>
+  <dl>Preço máximo por hora: <%= number_to_currency @project.max_payment_per_hour %></dl>
+  <dl>Modalidade de trabalho: <%= @project.work_type.description %></dl>
+  <dl>Gerente do projeto: <%= @project.user.email %></dl>
+</dl>
 
 <% if user_signed_in? %>
   <%= form_with(model: @project, url: end_project_project_path(@project.id), method: :post) do |epp| %>
     <%= epp.submit 'Terminar projeto' %>
   <% end %>
-<% end %>
-
-<% if user_signed_in? %>
+  <br>
   <%= form_with(model: @project, url: end_accepting_devs_project_path(@project.id), method: :post) do |epp| %>
     <%= epp.submit 'Terminar recrutamento' %>
   <% end %>
 <% end %>
-
-
 
 
 
@@ -49,8 +33,6 @@
     <% elsif dpp.project == @project and dpp.status == 'rejected' %>
       <p>Você foi recusado pelo Gerente desse projeto</p>
       <p>Motivo da Recusa: <%= dpp.rejection_motive %></p>
-    <% elsif dpp.project == @project and dpp.status == 'pending' %>
-      <p>Você já declarou intresse nesse projeto! </p>
     <% end %>
   <% end %>
   <%= link_to 'Veja suas propostas', project_project_propositions_path(@project.id) %>
@@ -63,11 +45,11 @@
 <% end %>
 
 <% if user_signed_in? and @project.user.email == current_user.email %>
-  <h3>Propostas de participação </h3>
+  <h4>Propostas de participação </h4>
   <% @project.project_propositions.each do |pp| %>
     <% if pp.status == 'pending' %>
       <div>
-        <p><strong>Nome completo do Dev:</strong> <%= link_to "#{pp.dev.dev_profile.full_name}", dev_profile_path(pp.dev.id) %></p>
+        <p><strong>Pessoa Desenvolvedora:</strong> <%= link_to "#{pp.dev.dev_profile.full_name}", dev_profile_path(pp.dev.id) %></p>
         <p>Motivação: <%= pp.motivation %></p>
         <p>Pagamento esperado: <%= number_to_currency pp.expected_payment %></p>
         <p>Horas por semana: <%= pp.available_hours_per_week %></p>

@@ -6,30 +6,21 @@
     <% end %>
   </ul>
 <% end %>
+<dl>
 <%= form_with(model: @project) do |f| %>
-  <div>
-    <%= f.label :title %>
-  <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :detailed_description %>
-    <%= f.text_area :detailed_description, rows: 5, cols: 100 %>
-  </div>
-  <div>
-    <%= f.label :skill_sets %>
-    <%= f.text_field :skill_sets %>
-  </div>
-  <div>
-    <%= f.label :max_payment_per_hour %>
-    <%= f.number_field :max_payment_per_hour %>
-  </div>
-  <div>
-    <%= f.label :hire_date_limit %>
-    <%= f.date_field :hire_date_limit %>
-  </div>
-  <div>
-    <%= f.label :work_type_id %>
-    <%= f.collection_select :work_type_id, WorkType.all, :id, :description  %>
-  </div>
+
+  <dt><%= f.label :title %></dt>
+  <dd><%= f.text_field :title %></dd>  
+  <dt><%= f.label :detailed_description %></dt>
+  <dd><%= f.text_area :detailed_description, rows: 5, cols: 100 %></dd>
+  <dt><%= f.label :skill_sets %></dt>
+  <dd><%= f.text_field :skill_sets %></dd>
+  <dt><%= f.label :max_payment_per_hour %></dt>
+  <dd><%= f.number_field :max_payment_per_hour %></dd>
+  <dt><%= f.label :hire_date_limit %></dt>
+  <dd><%= f.date_field :hire_date_limit %></dd>
+  <dt><%= f.label :work_type_id %></dt>
+  <dd><%= f.collection_select :work_type_id, WorkType.all, :id, :description  %></dd>
   <%= f.submit 'Cadastrar Projeto' %>
 <% end %>
+</dl>

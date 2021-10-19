@@ -1,11 +1,4 @@
 <h1>Edite seu Perfil</h1>
-<% if @dev_profile.errors.any? %>
-  <ul>
-    <% @dev_profile.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-  </ul>
-<% end %>
 
 <% if @expertise.blank? %>
   <h3>Cadastre uma área de atuação para continuar</h3>

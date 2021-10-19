@@ -3,7 +3,7 @@
 <% if dev_signed_in?%>
   <nav>
     <div><%= link_to 'Log out', destroy_dev_session_path, method: :delete %></div>
-    <div><%= link_to 'Editar perfil', new_dev_profile_path(current_dev.id) %></div>
+    <div><%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %></div>
   </nav>
 <% end %>
 <dl>

@@ -24,16 +24,19 @@ class DevProfilesController < ApplicationController
     @expertise = Expertise.all
   end
 
-
   def show
     @dev_profile = DevProfile.find(params[:id])
   end
 
   def update
     @dev_profile = DevProfile.find(params[:id])
-    @dev_profile.update(dev_profile_params)
-    redirect_to dev_profile_path
-
+    @expertise = Expertise.all
+    @dev = current_dev
+    if @dev_profile.update(dev_profile_params)
+      redirect_to dev_profile_path
+    else
+      render :edit
+    end
   end
 
 
