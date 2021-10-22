@@ -13,10 +13,10 @@ describe 'visitor' do
     click_on 'Entrar como Pessoa Desenvolvedora'
     fill_in 'E-mail', with: 'dev@dev.com'
     fill_in 'Senha', with: '123456'
-    click_on 'Log in'
+    click_on 'Entrar'
     
     expect(page).to have_content('Bem vindo dev@dev.com')
-    expect(page).to have_link('Log out')
+    expect(page).to have_link('Sair')
   end
 
   it 'logs out from dev account' do
@@ -29,23 +29,22 @@ describe 'visitor' do
     
     login_as dev, scope: :dev
     visit root_path
-    click_on 'Log out'
+    click_on 'Sair'
 
     expect(page).to have_content('Bem vindo visitante, faça o login para navegar pelo site')
     expect(page).to have_link('Entrar como Pessoa Desenvolvedora')
-    expect(page).not_to have_link('Log out')
+    expect(page).not_to have_link('Sair')
     
   end
 
   it 'create account as dev' do
-    
     visit root_path
     click_on 'Entrar como Pessoa Desenvolvedora'
-    click_on 'Sign up'
+    click_on 'Cadastrar'
     fill_in 'E-mail', with: 'dev@dev.com'
     fill_in 'Senha', with: '123456'
     fill_in 'Confirme a senha', with: '123456'
-    click_on 'Sign up'
+    click_on 'Entrar'
 
     expect(page).to have_content('Complete seu Perfil')
     

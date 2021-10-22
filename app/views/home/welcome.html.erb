@@ -1,10 +1,10 @@
-<h1>Bem vindo ao Dev4Hire</h1>
+<h1><%= t '.welcome' %> Dev4Hire</h1>
 
 <% unless dev_signed_in? || user_signed_in? %>
-  <p>Bem vindo visitante, faça o login para navegar pelo site</p>
+  <p><%=t '.welcome_message' %></p>
   <nav>
-    <%= link_to 'Entrar como Pessoa Desenvolvedora', new_dev_session_path %>
+    <%= link_to "#{t 'log_as_dev'}", new_dev_session_path, class:"btn btn-primary" %>
     <span>ou</span>
-    <%= link_to 'Entrar como Gerente de Projetos', new_user_session_path %>
+    <%= link_to "#{t 'log_as_user'}", new_user_session_path, class:"btn btn-primary" %>
   </nav>
 <% end %>

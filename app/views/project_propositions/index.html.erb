@@ -2,7 +2,7 @@
   <% if pp.dev == current_dev %>
     <% if pp.cancel_motive.present? %>
       <dl>
-        <dt>Título: <%= pp.project.title %></dt>
+        <dt>Título: <%= (t 'activerecord.attributes.dev_profile.full_name') + ': ' + pp.project.title %></dt>
         <dd>Razão do cancelamento: <%= pp.cancel_motive %></dd>
       </dl>
     <% else %>

@@ -10,24 +10,62 @@
   </head>
 
   <body>
-    <% if flash %>
-      <% flash.each do |type, msg| %>
-        <div><%= msg %></div>
-        <% end %>
-    <% end %>
     <nav>
       <% if dev_signed_in? %>
-        <div>Bem vindo <%= current_dev.email %></div>
-        <%= link_to 'Log out', destroy_dev_session_path, method: :delete %>
-        <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id) %>
-        <%= link_to 'Área de projetos', projects_path %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <%= link_to 'Dev4Hire', root_path, class: 'navbar-brand' %>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <%= link_to 'Área de projetos', projects_path, class: 'nav-link active'%>
+                <%= link_to 'Editar perfil', edit_dev_profile_path(current_dev.id), class: 'nav-link active' %>
+                <%= link_to 'Sair', destroy_dev_session_path, method: :delete, class: 'nav-link active' %>
+                <div class="nav-link active">Bem vindo <%= current_dev.email %></div>
+              </div>
+            </div>
+          </div>
+        </nav>
       <% elsif user_signed_in? %>
-        <div>Bem vindo <%= current_user.email %></div>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-        <%= link_to 'Área de projetos', projects_path %>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <%= link_to 'Dev4Hire', root_path, class: 'navbar-brand' %>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <%= link_to 'Área de projetos', projects_path, class: 'nav-link active'%>
+                <% if current_page?(controller: 'projects', action: 'index') %>
+                  <%= link_to 'Criar novo projeto', new_project_path, class: 'nav-link active' %>
+                  <%= link_to 'Meus projetos', my_projects_projects_path, class: 'nav-link active' %>
+                  <%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path, class: 'nav-link active' %>
+                <% end %>
+                <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link active' %>
+                <div class="nav-link active">Bem vindo <%= current_user.email %></div>
+              </div>
+            </div>
+          </div>
+        </nav>
       <% end %>
-      
     </nav>
+    <% if flash %>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-dark" role="alert">
+          <%= msg %>
+        </div>
+        <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
+
+
+
+<% if user_signed_in? %>
+  
+  
+  
+<% end %>

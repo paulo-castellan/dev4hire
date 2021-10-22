@@ -4,20 +4,21 @@
     <p><%= link_to 'Criar novo projeto', new_project_path %></p>
   </div>
 <% else %>
+  <br>
   <div>
     <% @projects.each do |p| %>
       <% if p.hire_date_limit > Date.current %>
-        <dl>
-          <dt>Título:</dt>
-          <dd><%= p.title %></dd>
-          <dt>Habilidades desejadas: </dt>
-          <dd><%= p.skill_sets %></dd>
-          <dt>Data limite para contratação</dt>
-          <dd><%= l p.hire_date_limit %></dd>
-          <dt>Preço máximo por hora:</dt>
-          <dd><%= number_to_currency p.max_payment_per_hour %></dd>
-        </dl>
+        <div class="card bg-light mb-3" style="max-width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Título: <%= p.title %></h5>
+            <p class="card-text">Habilidades desejadas: <%= p.skill_sets %></p>
+            <p class="card-text">Data limite para contratação: <%= l p.hire_date_limit %></p>
+            <p class="card-text">Preço máximo por hora: <%= number_to_currency p.max_payment_per_hour %></p>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>
 <% end %>
+
+

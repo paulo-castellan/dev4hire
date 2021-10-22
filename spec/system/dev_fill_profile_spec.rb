@@ -21,8 +21,8 @@ describe 'dev profile' do
     expect(current_path).to eq(dev_profile_path(dev.id))
     expect(page).to have_content('Parabéns, seu perfil foi atualizado com sucesso')
     expect(page).to have_css('img[src*="profile_image.jpg"]')
-    expect(page).not_to have_link('Log in')
-    expect(page).to have_link('Log out')
+    expect(page).not_to have_link('Entrar')
+    expect(page).to have_link('Sair')
   end
 
   it 'are left with empty fields' do
@@ -99,8 +99,8 @@ describe 'dev profile' do
     expect(current_path).to eq(dev_profile_path(dev.id))
     expect(page).to have_content('Parabéns, seu perfil foi atualizado com sucesso')
     expect(page).to have_css('img[src*="default_profile_image.png"]')
-    expect(page).not_to have_link('Log in')
-    expect(page).to have_link('Log out')
+    expect(page).not_to have_link('Entrar')
+    expect(page).to have_link('Sair')
   end
 
   it 'is redirected to finish the profile' do
@@ -110,7 +110,7 @@ describe 'dev profile' do
     click_on 'Entrar como Pessoa Desenvolvedora'
     fill_in 'E-mail', with: 'dev@dev.com'
     fill_in 'Senha', with: '123456'
-    click_on 'Log in'
+    click_on 'Entrar'
 
     expect(current_path).to eq(new_dev_profile_path)
   end

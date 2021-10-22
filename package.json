@@ -1,5 +1,7 @@
 {
   "name": "dev4hire",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
 }

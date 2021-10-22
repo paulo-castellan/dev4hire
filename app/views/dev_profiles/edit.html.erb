@@ -1,8 +1,8 @@
-<h1>Edite seu Perfil</h1>
+<h1><%= t 'dev_profiles.form.edit_profile' %></h1>
 
 <% if @expertise.blank? %>
-  <h3>Cadastre uma área de atuação para continuar</h3>
-  <%= link_to 'Cadastrar área de atuação', new_expertise_path %>
+  <h3><%= t 'dev_profiles.form.register_new_field_of_expertise' %></h3>
+  <%= link_to "#{t '.register_new_field_of_expertise'}", new_expertise_path %>
 <% else %>
   <%= render 'form', dev_profile: @dev_profile %>
 <% end %>

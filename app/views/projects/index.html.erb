@@ -1,24 +1,26 @@
-<% if user_signed_in? %>
-  <div><%= link_to 'Criar novo projeto', new_project_path %></div>
-  <div><%= link_to 'Meus projetos', my_projects_projects_path %></div>
-  <div><%= link_to 'Adicionar uma Modalidade de Trabalho', new_work_type_path %></div>
-<% end %>
 
-<%= form_with url: "/search", method: :get, local: true do |f| %>
-  <%= f.label :q, 'Buscar' %>
-  <%= f.text_field :q %>
-  <%= f.submit 'Buscar' %>
-<% end %>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <%= form_with url: "/search", method: :get, local: true, class: "d-flex" do |f| %>
+      <%= f.label :q, 'Buscar' %>
+      <%= f.text_field :q,  class:"form-control me-2" %>
+      <%= f.submit 'Buscar', class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
+</nav>
 
 <div>
   <% @projects.each do |p| %>
     <% if p.hire_date_limit > Date.current and p.status != 'inactive' %>
-      <div>
-        <p>Título: <%= link_to p.title, p %></p>
-        <p>Habilidades desejadas: <%= p.skill_sets %></p>
-        <p>Data limite para contratação: <%= l p.hire_date_limit %></p>
-        <p>Pagamento máximo (por hora): <%= number_to_currency p.max_payment_per_hour %></p>
+      <br>
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to p.title, p %></h5>
+          <p class="card-text">Habilidades desejadas: <%= p.skill_sets %></p>
+          <p class="card-text">Data limite para contratação: <%= l p.hire_date_limit %></p>
+          <p class="card-text">Pagamento máximo (por hora): <%= number_to_currency p.max_payment_per_hour %></p>
+        </div>
       </div>
     <% end %>
   <% end %>
-</div>
+

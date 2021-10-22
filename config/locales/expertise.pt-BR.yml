@@ -1,4 +1,7 @@
 pt-BR:
+  expertises:
+    new:
+      submit: Cadastrar
   activerecord:
     models:
       expertise: Área de atuação

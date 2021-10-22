@@ -1,4 +1,4 @@
-<h1>Complete seu Perfil</h1>
+<h1><%= t 'dev_profiles.form.finish_profile' %></h1>
 <% if @dev_profile.errors.any? %>
   <ul>
     <% @dev_profile.errors.full_messages.each do |error| %>
@@ -7,8 +7,8 @@
   </ul>
 <% end %>
 <% if @expertise.blank? %>
-  <h3>Cadastre uma área de atuação para continuar</h3>
-  <%= link_to 'Cadastrar área de atuação', new_expertise_path %>
+  <h3><%= t 'dev_profiles.form.register_new_field_of_expertise' %></h3>
+  <%= link_to "#{t 'dev_profiles.form.new_expertise'}", new_expertise_path %>
 <% else %>
   <%= render 'form', dev_profile: @dev_profile %>
 <% end %>

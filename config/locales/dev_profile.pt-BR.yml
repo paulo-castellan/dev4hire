@@ -1,4 +1,13 @@
 pt-BR:
+  dev_profiles:
+    form:
+      expertise_not_found: Não encontrou a sua área de atuação?
+      new_expertise: Cadastrar área de atuação
+      update_profile: Atualizar perfil
+      edit_profile: Editar Perfil
+      register_new_field_of_expertise: Cadastre uma área de atuação para continuar
+      finish_profile: Complete seu Perfil
+      profile_owner: Esse é o perfil de
   activerecord:
     models:
       dev_profile: Perfil da pessoa desenvolvedora

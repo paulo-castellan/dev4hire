@@ -1,0 +1,9 @@
+pt-BR:
+  log_as_dev: Entrar como Pessoa Desenvolvedora
+  log_as_user: Entrar como Gerente de Projetos
+  home:
+    welcome:
+      welcome: Bem-vindo ao
+      welcome_message: Bem vindo visitante, faça o login para navegar pelo site
+      
+      
