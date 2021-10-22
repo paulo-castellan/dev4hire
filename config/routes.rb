@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :devs
   
-  resources :dev_profiles
+  resources :dev_profiles, only: [:new, :create, :show, :edit, :update]
   resources :expertises, only: [:new, :create]  
   resources :work_types, only: [:new, :create]
   resources :projects, only: [:index, :new, :create, :show], shallow: true do
